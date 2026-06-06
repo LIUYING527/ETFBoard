@@ -15,7 +15,6 @@
   --r:12px;
 }
 body{background:var(--bg);color:var(--tx);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;min-height:100vh;overflow-x:hidden}
-
 #hdr{background:var(--sf);padding:11px 13px 7px;position:sticky;top:0;z-index:100;border-bottom:1px solid var(--s3)}
 .h1{display:flex;align-items:center;justify-content:space-between;margin-bottom:5px}
 .htit{font-size:17px;font-weight:700}
@@ -23,30 +22,23 @@ body{background:var(--bg);color:var(--tx);font-family:-apple-system,BlinkMacSyst
 .hb{background:var(--s3);color:var(--t2);border:none;padding:5px 9px;border-radius:7px;font-size:12px;cursor:pointer;white-space:nowrap}
 .hb.on{background:var(--bl);color:#fff}
 .hb:active{opacity:.7}
-.hst{font-size:11px;color:var(--t3);display:flex;align-items:center;gap:4px;flex-wrap:wrap}
+.hst{font-size:11px;color:var(--t3);display:flex;align-items:center;gap:4px}
 .dot{width:6px;height:6px;border-radius:50%;background:var(--t3);flex-shrink:0}
 .dot.live{background:var(--gr);animation:blink 2s infinite}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
-.prg{font-size:11px;color:var(--bl)}
-
-/* error banner */
-#errBanner{display:none;background:#7f1d1d;color:#fca5a5;font-size:12px;padding:8px 13px;border-bottom:1px solid #991b1b;line-height:1.5}
-
+.prg{font-size:11px;color:var(--bl);margin-left:2px}
 #tabs{background:var(--sf);padding:0 13px 9px;display:flex;gap:5px;flex-wrap:wrap;align-items:center;border-bottom:1px solid var(--s3)}
 .tab{background:transparent;color:var(--t2);border:1px solid var(--s3);padding:3px 10px;border-radius:18px;font-size:12px;cursor:pointer;white-space:nowrap}
 .tab.on{background:var(--bl);color:#fff;border-color:var(--bl)}
 .ss{margin-left:auto;background:var(--s3);color:var(--t2);border:none;padding:4px 7px;border-radius:6px;font-size:12px;cursor:pointer;outline:none}
-
 #grid{padding:9px;display:grid;grid-template-columns:1fr 1fr;gap:9px;padding-bottom:130px}
 @media(min-width:520px){#grid{grid-template-columns:repeat(3,1fr)}}
 @media(min-width:780px){#grid{grid-template-columns:repeat(4,1fr)}}
-
 .card{background:var(--sf);border-radius:var(--r);padding:11px 10px 9px;cursor:pointer;border:1px solid var(--s3);position:relative;overflow:hidden;user-select:none;transition:transform .1s}
 .card:active{transform:scale(.97)}
 .card.cg{border-color:var(--re);background:linear-gradient(135deg,var(--sf) 55%,#ef444414)}
 .card.cy{border-color:var(--ye);background:linear-gradient(135deg,var(--sf) 55%,#f59e0b14)}
 .card.cr{border-color:var(--gr);background:linear-gradient(135deg,var(--sf) 55%,#22c55e14)}
-.card.ce{opacity:.6}
 .csig{position:absolute;top:7px;right:7px;font-size:15px}
 .ccode{font-size:9px;color:var(--t3);margin-bottom:1px}
 .cname{font-size:12px;font-weight:700;padding-right:18px;margin-bottom:5px;line-height:1.25}
@@ -56,18 +48,16 @@ body{background:var(--bg);color:var(--tx);font-family:-apple-system,BlinkMacSyst
 .cdiv{height:1px;background:var(--s3);margin:5px 0}
 .crow{display:flex;justify-content:space-between;margin-bottom:2px}
 .cl{font-size:10px;color:var(--t3)}.cv{font-size:10px;color:var(--t2);font-weight:500}
-.cma{font-size:9px;margin:3px 0 4px;letter-spacing:.3px}
+.cma{font-size:9px;margin:3px 0 4px}
 .mu{color:var(--re)}.md{color:var(--gr)}
 .cbg{height:3px;background:var(--s3);border-radius:2px;overflow:hidden;margin-top:4px}
 .cb{height:100%;border-radius:2px;transition:width .5s}
 .csc{font-size:10px;font-weight:700;margin-top:2px}
 .cerr{font-size:10px;color:var(--t3);text-align:center;padding:4px 0}
 .rbtn{background:var(--s3);color:var(--t2);border:none;padding:3px 8px;border-radius:5px;font-size:10px;cursor:pointer;width:100%;margin-top:3px}
-
 .sk{background:linear-gradient(90deg,var(--s2) 25%,var(--s3) 50%,var(--s2) 75%);background-size:200% 100%;animation:sh 1.2s infinite;border-radius:3px}
 @keyframes sh{0%{background-position:200% 0}to{background-position:-200% 0}}
 .skh{height:11px;margin:4px 0}.skp{height:17px;width:60%;margin:5px 0}
-
 #aip{position:fixed;bottom:0;left:0;right:0;z-index:200;background:var(--sf);border-top:2px solid var(--s3);border-radius:18px 18px 0 0;max-height:70vh;display:flex;flex-direction:column;transform:translateY(calc(100% - 50px));transition:transform .3s cubic-bezier(.4,0,.2,1)}
 #aip.open{transform:translateY(0)}
 #aidrag{padding:10px 13px 8px;cursor:pointer;display:flex;align-items:center;gap:9px;border-bottom:1px solid var(--s3);flex-shrink:0}
@@ -79,7 +69,6 @@ body{background:var(--bg);color:var(--tx);font-family:-apple-system,BlinkMacSyst
 #aibody ul,#aibody ol{padding-left:16px;margin:3px 0}#aibody li{margin:2px 0}#aibody strong{color:var(--tx)}
 .aiph{color:var(--t3);text-align:center;padding:16px 0}
 @media(min-width:900px){#aip{max-width:440px;right:14px;left:auto;border-radius:var(--r)}}
-
 #det{display:none;position:fixed;inset:0;z-index:300;background:#000b;align-items:flex-end}
 #det.show{display:flex}
 .dbox{background:var(--sf);border-radius:20px 20px 0 0;width:100%;max-height:83vh;display:flex;flex-direction:column}
@@ -96,7 +85,6 @@ canvas#ch{width:100%;height:105px;display:block;background:var(--s2);border-radi
 .mgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
 .mc{background:var(--s2);border-radius:7px;padding:9px 6px;text-align:center}
 .ml{font-size:9px;color:var(--t3);margin-bottom:3px}.mv{font-size:13px;font-weight:700}
-
 #cfg{display:none;position:fixed;inset:0;z-index:500;background:#000b;align-items:center;justify-content:center}
 #cfg.show{display:flex}
 .cbox{background:var(--sf);border-radius:var(--r);padding:17px;width:min(88vw,370px);border:1px solid var(--s3)}
@@ -107,15 +95,13 @@ canvas#ch{width:100%;height:105px;display:block;background:var(--s2);border-radi
 .cbtns{display:flex;gap:9px;justify-content:flex-end}
 .bcc{background:var(--s3);color:var(--t2);border:none;padding:7px 13px;border-radius:7px;cursor:pointer;font-size:13px}
 .bcs{background:var(--bl);color:#fff;border:none;padding:7px 13px;border-radius:7px;cursor:pointer;font-size:13px;font-weight:600}
-
 #toast{position:fixed;top:70px;left:50%;transform:translateX(-50%);background:#1e293b;color:var(--t2);padding:7px 13px;border-radius:18px;font-size:12px;z-index:600;opacity:0;transition:opacity .25s;pointer-events:none;max-width:88vw;text-align:center;border:1px solid var(--s3)}
 #toast.on{opacity:1}
-#top{position:fixed;bottom:62px;right:13px;z-index:150;background:var(--bl);color:#fff;border:none;width:37px;height:37px;border-radius:50%;font-size:17px;cursor:pointer;display:none;align-items:center;justify-content:center;box-shadow:0 3px 10px #6366f144}
+#top{position:fixed;bottom:62px;right:13px;z-index:150;background:var(--bl);color:#fff;border:none;width:37px;height:37px;border-radius:50%;font-size:17px;cursor:pointer;display:none;align-items:center;justify-content:center}
 #top.on{display:flex}
 </style>
 </head>
 <body>
-
 <div id="hdr">
   <div class="h1">
     <div class="htit">📊 ETF信号板</div>
@@ -131,9 +117,6 @@ canvas#ch{width:100%;height:105px;display:block;background:var(--s2);border-radi
     <span class="prg" id="prg"></span>
   </div>
 </div>
-
-<div id="errBanner"></div>
-
 <div id="tabs">
   <button class="tab on" onclick="setF('all')">全部</button>
   <button class="tab" onclick="setF('宽基')">宽基</button>
@@ -147,9 +130,7 @@ canvas#ch{width:100%;height:105px;display:block;background:var(--s2);border-radi
     <option value="name">按名称</option>
   </select>
 </div>
-
 <div id="grid"></div>
-
 <div id="aip">
   <div class="aipill"></div>
   <div id="aidrag" onclick="toggleAI()">
@@ -158,7 +139,6 @@ canvas#ch{width:100%;height:105px;display:block;background:var(--s2);border-radi
   </div>
   <div id="aibody"><div class="aiph">点击「🤖 AI」按钮获取市场分析</div></div>
 </div>
-
 <div id="det" onclick="if(event.target===this)closeDet()">
   <div class="dbox">
     <div class="dhdr">
@@ -174,7 +154,6 @@ canvas#ch{width:100%;height:105px;display:block;background:var(--s2);border-radi
     </div>
   </div>
 </div>
-
 <div id="cfg" onclick="if(event.target===this)closeCfg()">
   <div class="cbox">
     <div class="ctit">⚙️ 设置</div>
@@ -186,46 +165,48 @@ canvas#ch{width:100%;height:105px;display:block;background:var(--s2);border-radi
     </div>
   </div>
 </div>
-
 <button id="top" onclick="scrollTo({top:0,behavior:'smooth'})">↑</button>
 <div id="toast"></div>
 
 <script>
-// ── ETF List ──────────────────────────────────────────────────────────────
+// ── ETF List（tq = 腾讯财经代码） ─────────────────────────────────────────
 const ETFS = [
-  {code:'510300',name:'沪深300ETF',  secid:'1.510300',cat:'宽基'},
-  {code:'510500',name:'中证500ETF',  secid:'1.510500',cat:'宽基'},
-  {code:'510050',name:'上证50ETF',   secid:'1.510050',cat:'宽基'},
-  {code:'159915',name:'创业板ETF',   secid:'0.159915',cat:'宽基'},
-  {code:'588000',name:'科创50ETF',   secid:'1.588000',cat:'宽基'},
-  {code:'159919',name:'沪深300(嘉实)',secid:'0.159919',cat:'宽基'},
-  {code:'512760',name:'芯片ETF',     secid:'1.512760',cat:'科技'},
-  {code:'159819',name:'人工智能ETF', secid:'0.159819',cat:'科技'},
-  {code:'159770',name:'机器人ETF',   secid:'0.159770',cat:'科技'},
-  {code:'512480',name:'半导体ETF',   secid:'1.512480',cat:'科技'},
-  {code:'513050',name:'中概互联ETF', secid:'1.513050',cat:'科技'},
-  {code:'516110',name:'科技100ETF',  secid:'1.516110',cat:'科技'},
-  {code:'512880',name:'证券ETF',     secid:'1.512880',cat:'行业'},
-  {code:'512010',name:'医药ETF',     secid:'1.512010',cat:'行业'},
-  {code:'516160',name:'新能源车ETF', secid:'1.516160',cat:'行业'},
-  {code:'515790',name:'光伏ETF',     secid:'1.515790',cat:'行业'},
-  {code:'512660',name:'军工ETF',     secid:'1.512660',cat:'行业'},
-  {code:'512690',name:'白酒ETF',     secid:'1.512690',cat:'行业'},
-  {code:'515180',name:'红利ETF',     secid:'1.515180',cat:'行业'},
-  {code:'159632',name:'银行ETF',     secid:'0.159632',cat:'行业'},
-  {code:'515220',name:'煤炭ETF',     secid:'1.515220',cat:'行业'},
-  {code:'512400',name:'有色金属ETF', secid:'1.512400',cat:'行业'},
-  {code:'518880',name:'黄金ETF',     secid:'1.518880',cat:'商品债'},
-  {code:'159934',name:'黄金ETF(易方达)',secid:'0.159934',cat:'商品债'},
-  {code:'511010',name:'国债ETF',     secid:'1.511010',cat:'商品债'},
-  {code:'511090',name:'30年国债ETF', secid:'1.511090',cat:'商品债'},
+  // 宽基
+  {code:'510300',name:'沪深300ETF',  tq:'sh510300',cat:'宽基'},
+  {code:'510500',name:'中证500ETF',  tq:'sh510500',cat:'宽基'},
+  {code:'510050',name:'上证50ETF',   tq:'sh510050',cat:'宽基'},
+  {code:'159915',name:'创业板ETF',   tq:'sz159915',cat:'宽基'},
+  {code:'588000',name:'科创50ETF',   tq:'sh588000',cat:'宽基'},
+  {code:'159919',name:'沪深300(嘉实)',tq:'sz159919',cat:'宽基'},
+  // 科技
+  {code:'512760',name:'芯片ETF',     tq:'sh512760',cat:'科技'},
+  {code:'159819',name:'人工智能ETF', tq:'sz159819',cat:'科技'},
+  {code:'159770',name:'机器人ETF',   tq:'sz159770',cat:'科技'},
+  {code:'512480',name:'半导体ETF',   tq:'sh512480',cat:'科技'},
+  {code:'513050',name:'中概互联ETF', tq:'sh513050',cat:'科技'},
+  {code:'516110',name:'科技100ETF',  tq:'sh516110',cat:'科技'},
+  // 行业
+  {code:'512880',name:'证券ETF',     tq:'sh512880',cat:'行业'},
+  {code:'512010',name:'医药ETF',     tq:'sh512010',cat:'行业'},
+  {code:'516160',name:'新能源车ETF', tq:'sh516160',cat:'行业'},
+  {code:'515790',name:'光伏ETF',     tq:'sh515790',cat:'行业'},
+  {code:'512660',name:'军工ETF',     tq:'sh512660',cat:'行业'},
+  {code:'512690',name:'白酒ETF',     tq:'sh512690',cat:'行业'},
+  {code:'515180',name:'红利ETF',     tq:'sh515180',cat:'行业'},
+  {code:'159632',name:'银行ETF',     tq:'sz159632',cat:'行业'},
+  {code:'515220',name:'煤炭ETF',     tq:'sh515220',cat:'行业'},
+  {code:'512400',name:'有色金属ETF', tq:'sh512400',cat:'行业'},
+  // 商品债
+  {code:'518880',name:'黄金ETF',     tq:'sh518880',cat:'商品债'},
+  {code:'159934',name:'黄金ETF(易方达)',tq:'sz159934',cat:'商品债'},
+  {code:'511010',name:'国债ETF',     tq:'sh511010',cat:'商品债'},
+  {code:'511090',name:'30年国债ETF', tq:'sh511090',cat:'商品债'},
 ];
 
 // ── State ─────────────────────────────────────────────────────────────────
-const D = {};
+const D = {};         // D[code] = {closes, price, chg, ma20, ma50, ma250, mom20, mom5, maScore, momScore, rank, score}
 const FAIL = new Set();
-let curCat='all', aiOpen=false, aiBusy=false, aiCtrl=null, rfTimer=null;
-let ldDone=0;
+let curCat='all', aiOpen=false, aiBusy=false, aiCtrl=null, rfTimer=null, ldDone=0;
 
 // ── Utils ─────────────────────────────────────────────────────────────────
 const $=id=>document.getElementById(id);
@@ -239,31 +220,82 @@ const isTrade=()=>{const n=new Date(),d=n.getDay(),m=n.getHours()*60+n.getMinute
 const tfmt=()=>{const n=new Date(),p=v=>String(v).padStart(2,'0');return p(n.getHours())+':'+p(n.getMinutes())+':'+p(n.getSeconds());};
 function toast(msg,dur=2800){const t=$('toast');t.textContent=msg;t.classList.add('on');setTimeout(()=>t.classList.remove('on'),dur);}
 
-// ── CORS Proxy Fetch ──────────────────────────────────────────────────────
-// Proxy list - tried in order until one succeeds
-const PROXY_LIST = [
-  url=>`https://corsproxy.io/?${encodeURIComponent(url)}`,
-  url=>`https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`,
-  url=>`https://thingproxy.freeboard.io/fetch/${url}`,
-];
+// ── Script Tag Loader（不受CORS限制）────────────────────────────────────
+// 加载外部脚本并读取它设置的全局变量
+function loadScript(url, charset='UTF-8', timeout=15000){
+  return new Promise((resolve,reject)=>{
+    const s=document.createElement('script');
+    s.charset=charset;
+    const tid=setTimeout(()=>{s.remove();reject(new Error('timeout'));},timeout);
+    s.onload=()=>{clearTimeout(tid);s.remove();resolve();};
+    s.onerror=()=>{clearTimeout(tid);s.remove();reject(new Error('load error'));};
+    s.src=url;
+    document.head.appendChild(s);
+  });
+}
 
-async function proxyFetch(rawUrl, timeoutMs=13000) {
-  let lastErr = null;
-  for (const mkProxy of PROXY_LIST) {
-    const ctrl = new AbortController();
-    const tid = setTimeout(()=>ctrl.abort(), timeoutMs);
-    try {
-      const r = await fetch(mkProxy(rawUrl), {signal: ctrl.signal});
-      clearTimeout(tid);
-      if (!r.ok) { lastErr=new Error(`HTTP ${r.status}`); continue; }
-      const text = await r.text();
-      return JSON.parse(text);
-    } catch(e) {
-      clearTimeout(tid);
-      lastErr = e;
+// ── 实时行情：腾讯 qt.gtimg.cn ──────────────────────────────────────────
+// 加载后设置全局 window.v_sh510300 = "1~名称~代码~现价~昨收~..."
+async function fetchRT(){
+  const codes=ETFS.map(e=>e.tq).join(',');
+  try{
+    await loadScript(`https://qt.gtimg.cn/q=${codes}`,'GBK',10000);
+    let n=0;
+    ETFS.forEach(e=>{
+      const raw=window['v_'+e.tq];
+      if(!raw)return;
+      delete window['v_'+e.tq];
+      const p=raw.split('~');
+      const price=parseFloat(p[3]);   // 现价
+      const chgPct=parseFloat(p[32]); // 涨跌幅%
+      if(!isNaN(price)&&price>0){
+        if(!D[e.code])D[e.code]={};
+        D[e.code].price=price;
+        if(!isNaN(chgPct))D[e.code].chg=chgPct;
+        if(D[e.code].closes?.length)D[e.code].closes[D[e.code].closes.length-1]=price;
+        FAIL.delete(e.code);n++;
+      }
+    });
+    return n;
+  }catch(e){return 0;}
+}
+
+// ── 历史K线：腾讯 web.ifzq.gtimg.cn ─────────────────────────────────────
+// _var 参数让API把结果赋给指定变量名，例如 window._h510300 = {...}
+// 数据格式：data[tqCode].qfqday = [["日期","开","收","高","低","量"], ...]
+async function fetchKline(etf){
+  const vn='_h'+etf.code; // 全局变量名，如 _h510300
+  try{
+    await loadScript(
+      `https://web.ifzq.gtimg.cn/appstock/app/fqkline/get?_var=${vn}&param=${etf.tq},day,,,300,qfq`,
+      'UTF-8', 15000
+    );
+    const data=window[vn];
+    delete window[vn];
+    const days=data?.data?.[etf.tq]?.qfqday||[];
+    const closes=days.map(d=>parseFloat(d[2])).filter(v=>!isNaN(v)&&v>0);
+    if(!closes.length){FAIL.add(etf.code);return;}
+    if(!D[etf.code])D[etf.code]={};
+    D[etf.code].closes=closes;
+    // 昨收和涨幅（若尚无实时价格则用K线最后一日）
+    if(!D[etf.code].price)D[etf.code].price=closes[closes.length-1];
+    if(D[etf.code].chg==null&&closes.length>=2){
+      const pv=closes[closes.length-2];
+      D[etf.code].chg=(closes[closes.length-1]-pv)/pv*100;
     }
+    FAIL.delete(etf.code);
+  }catch(e){
+    FAIL.add(etf.code);
   }
-  throw lastErr || new Error('all proxies failed');
+}
+
+async function retryOne(code){
+  const etf=ETFS.find(e=>e.code===code);if(!etf)return;
+  toast(`重新加载 ${etf.name}…`);
+  FAIL.delete(code);
+  await fetchKline(etf);
+  compute();renderGrid();
+  toast(FAIL.has(code)?`${etf.name} 仍失败`:`✓ ${etf.name} 加载成功`);
 }
 
 // ── Indicators ────────────────────────────────────────────────────────────
@@ -290,69 +322,21 @@ function compute(){
   ETFS.forEach(e=>{const d=D[e.code];if(d&&d.score==null&&d.maScore!=null)d.score=d.maScore;});
 }
 
-// ── Data Fetch ────────────────────────────────────────────────────────────
-async function fetchKline(etf){
-  const url=`https://push2his.eastmoney.com/api/qt/stock/kline/get?secid=${etf.secid}&klt=101&fqt=1&lmt=300&end=20500101&fields1=f1,f2,f3,f4,f5,f6&fields2=f51,f52,f53,f54,f55,f56`;
-  try{
-    const j=await proxyFetch(url);
-    const klines=j?.data?.klines;
-    if(!klines?.length){FAIL.add(etf.code);return;}
-    const closes=klines.map(k=>parseFloat(k.split(',')[2])).filter(v=>!isNaN(v)&&v>0);
-    if(!closes.length){FAIL.add(etf.code);return;}
-    if(!D[etf.code])D[etf.code]={};
-    D[etf.code].closes=closes;
-    D[etf.code].price=closes[closes.length-1];
-    if(closes.length>=2){const pv=closes[closes.length-2];D[etf.code].chg=(closes[closes.length-1]-pv)/pv*100;}
-    FAIL.delete(etf.code);
-  }catch(e){
-    FAIL.add(etf.code);
-  }
-}
-
-async function fetchRT(){
-  const ids=ETFS.map(e=>e.secid).join(',');
-  const url=`https://push2.eastmoney.com/api/qt/ulist.np/get?secids=${ids}&fields=f2,f3,f12,f14&fltt=2&invt=2&ut=bd1d9ddb04089700cf9c27f6f7426281`;
-  try{
-    const j=await proxyFetch(url,10000);
-    const diffs=j?.data?.diff||[];
-    let n=0;
-    for(const item of diffs){
-      const code=String(item.f12).padStart(6,'0');
-      const price=parseFloat(item.f2),chg=parseFloat(item.f3);
-      if(!isNaN(price)&&price>0){
-        if(!D[code])D[code]={};
-        D[code].price=price;
-        if(D[code].closes?.length)D[code].closes[D[code].closes.length-1]=price;
-        if(!isNaN(chg))D[code].chg=chg;
-        FAIL.delete(code);n++;
-      }
-    }
-    return n;
-  }catch(e){return 0;}
-}
-
-async function retryOne(code){
-  const etf=ETFS.find(e=>e.code===code);if(!etf)return;
-  toast(`重新加载 ${etf.name}…`);
-  FAIL.delete(code);
-  await fetchKline(etf);
-  compute();renderGrid();
-  toast(FAIL.has(code)?`${etf.name} 仍失败`:`✓ ${etf.name} 加载成功`);
-}
-
+// ── Load ──────────────────────────────────────────────────────────────────
 async function loadAll(manual=false){
   const btn=$('rfb');
   btn.textContent='加载…';btn.disabled=true;
   ldDone=0;FAIL.clear();
-  $('errBanner').style.display='none';
-  updateSt('加载数据…',false);
+  updateSt('获取实时价格…',false);
   renderSkel();
 
-  // 先拉实时价格（快，一次请求全部ETF）
-  fetchRT().then(n=>{if(n>0){compute();renderGrid();}});
+  // 1. 先批量拉实时价（一次拿全部26只）
+  await fetchRT();
+  compute();renderGrid();
 
-  // 并行加载K线（每批6个，避免代理限流）
-  const B=6;
+  // 2. 逐批加载K线（每批5只，保证不撑爆脚本标签队列）
+  updateSt('加载历史K线…',false);
+  const B=5;
   for(let i=0;i<ETFS.length;i+=B){
     await Promise.all(ETFS.slice(i,i+B).map(e=>
       fetchKline(e).then(()=>{
@@ -364,23 +348,22 @@ async function loadAll(manual=false){
   }
   $('prg').textContent='';
 
-  if(isTrade()||manual){const n=await fetchRT();if(n>0){compute();renderGrid();}}
+  // 3. 交易时段再拉一次实时价，用最新价覆盖
+  if(isTrade()||manual){await fetchRT();compute();renderGrid();}
 
   btn.textContent='↻ 刷新';btn.disabled=false;
   const tr=isTrade();
   updateSt(tr?'交易中 · 60s刷新':'非交易时段',tr);
-
-  if(FAIL.size){
-    const b=$('errBanner');
-    b.innerHTML=`⚠️ ${FAIL.size}只ETF加载失败（网络或代理问题）。<br>失败：${[...FAIL].map(c=>ETFS.find(e=>e.code===c)?.name||c).join('、')}。点卡片可单独重试。`;
-    b.style.display='block';
-  }
+  if(FAIL.size)toast(`⚠️ ${FAIL.size}只ETF失败，点卡片重试`);
   sched();
 }
 
 function sched(){
   clearTimeout(rfTimer);
-  if(isTrade())rfTimer=setTimeout(async()=>{const n=await fetchRT();if(n>0){compute();renderGrid();}updateSt('交易中 · 60s刷新',true);sched();},60000);
+  if(isTrade())rfTimer=setTimeout(async()=>{
+    await fetchRT();compute();renderGrid();
+    updateSt('交易中 · 60s刷新',true);sched();
+  },60000);
 }
 function updateSt(msg,live){
   $('stxt').textContent=tfmt()+' · '+msg;
@@ -402,16 +385,30 @@ function getList(){
 }
 function renderSkel(){
   $('grid').innerHTML=getList().map(()=>`<div class="card">
-    <div class="sk skh" style="width:40%"></div><div class="sk skh" style="width:72%"></div>
-    <div class="sk skp"></div><div class="sk skh" style="width:50%"></div>
-    <div class="sk skh"></div><div class="sk skh" style="width:60%"></div>
+    <div class="sk skh" style="width:40%"></div>
+    <div class="sk skh" style="width:72%"></div>
+    <div class="sk skp"></div>
+    <div class="sk skh" style="width:50%"></div>
+    <div class="sk skh"></div>
+    <div class="sk skh" style="width:60%"></div>
   </div>`).join('');
 }
 function renderGrid(){$('grid').innerHTML=getList().map(e=>cardOf(e)).join('');}
 function cardOf(e){
   const d=D[e.code],fail=FAIL.has(e.code);
-  if(fail)return`<div class="card ce"><div class="ccode">${e.code}</div><div class="cname">${esc(e.name)}</div><div class="cerr">⚠️ 加载失败</div><button class="rbtn" onclick="retryOne('${e.code}');event.stopPropagation()">↻ 重试</button></div>`;
-  if(!d?.closes?.length)return`<div class="card"><div class="ccode">${e.code}</div><div class="cname">${esc(e.name)}</div><div class="sk skp"></div><div class="sk skh" style="width:55%"></div><div class="sk skh"></div></div>`;
+  if(fail)return`<div class="card" style="opacity:.6"><div class="ccode">${e.code}</div><div class="cname">${esc(e.name)}</div><div class="cerr">⚠️ 加载失败</div><button class="rbtn" onclick="retryOne('${e.code}');event.stopPropagation()">↻ 重试</button></div>`;
+  if(!d?.closes?.length){
+    if(d?.price)return`<div class="card" onclick="openDet('${e.code}')">
+      <div class="ccode">${e.code} · ${e.cat}</div>
+      <div class="cname">${esc(e.name)}</div>
+      <div class="cpx">${fP(d.price)}</div>
+      <div class="cchg ${d.chg>0.01?'up':d.chg<-0.01?'dn':'fl'}">${fPct(d.chg)}</div>
+      <div class="sk skh" style="width:70%;margin-top:8px"></div>
+      <div class="sk skh"></div>
+    </div>`;
+    return`<div class="card"><div class="ccode">${e.code}</div><div class="cname">${esc(e.name)}</div>
+      <div class="sk skp"></div><div class="sk skh" style="width:55%"></div><div class="sk skh"></div></div>`;
+  }
   const sig=sigOf(d.score??0);
   const cc=d.chg>0.01?'up':d.chg<-0.01?'dn':'fl';
   const sc=d.score??0;
@@ -464,7 +461,6 @@ function openDet(code){
   $('det').classList.add('show');
 }
 function closeDet(){$('det').classList.remove('show');}
-
 function drawChart(d){
   const cv=$('ch'),ctx=cv.getContext('2d');
   const dpr=devicePixelRatio||1,W=cv.offsetWidth,H=105;
@@ -474,8 +470,7 @@ function drawChart(d){
   const mn=Math.min(...cls),mx=Math.max(...cls),rng=mx-mn||1;
   const px=i=>i/(n-1)*W,py=v=>(1-(v-mn)/rng)*(H-16)+8;
   const dma=(per,col)=>{
-    const pts=[];
-    for(let i=per-1;i<cls.length;i++){const sl=cls.slice(i-per+1,i+1);pts.push([i,sl.reduce((a,b)=>a+b,0)/per]);}
+    const pts=[];for(let i=per-1;i<cls.length;i++){const sl=cls.slice(i-per+1,i+1);pts.push([i,sl.reduce((a,b)=>a+b,0)/per]);}
     if(pts.length<2)return;
     ctx.beginPath();ctx.strokeStyle=col;ctx.lineWidth=1;ctx.setLineDash([3,3]);
     pts.forEach(([i,v],j)=>j?ctx.lineTo(px(i),py(v)):ctx.moveTo(px(i),py(v)));
@@ -518,17 +513,16 @@ async function runAI(){
   if(!key){toast('请先在 ⚙️ 设置 API Key');openCfg();return;}
   if(aiBusy){if(aiCtrl)aiCtrl.abort();return;}
   aiBusy=true;$('aisub').textContent='生成中… (再点停止)';
-  $('aibody').innerHTML='<div style="color:var(--t3);padding:6px 0">🤔 分析市场数据中…</div>';
+  $('aibody').innerHTML='<div style="color:var(--t3);padding:6px 0">🤔 分析市场数据…</div>';
   const now=new Date();
   const ds=`${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')}`;
   const rows=ETFS.map(e=>{
     const d=D[e.code]||{};
     const ma=[d.ma20&&d.price?`MA20${d.price>d.ma20?'▲':'▼'}`:'',d.ma50&&d.price?`MA50${d.price>d.ma50?'▲':'▼'}`:'',d.ma250&&d.price?`MA250${d.price>d.ma250?'▲':'▼'}`:''].filter(Boolean).join('');
-    return`${e.code} ${e.name.slice(0,8).padEnd(8)} 价${fP(d.price)} ${fPct(d.chg)} 动${fPct(d.mom20)} ${ma||'—'} 分${d.score??'N/A'}`;
+    return`${e.code} ${e.name.slice(0,7).padEnd(7)} 价${fP(d.price)} ${fPct(d.chg)} 动${fPct(d.mom20)} ${ma||'—'} 分${d.score??'N/A'}`;
   }).join('\n');
   const prompt=`你是A股ETF量化分析师。${ds}各ETF数据：\n\n${rows}\n\n请给出：\n1. **市场整体** (2句)\n2. **值得关注** ✅ 3-5只，每只一句理由\n3. **谨慎回避** ⚠️ 3只，一句理由\n4. **操作建议** (2句)\n\n语言简洁专业。`;
-  aiCtrl=new AbortController();
-  let full='';
+  aiCtrl=new AbortController();let full='';
   try{
     const resp=await fetch('https://api.deepseek.com/v1/chat/completions',{
       method:'POST',signal:aiCtrl.signal,
@@ -570,7 +564,7 @@ function openCfg(){$('akey').value=localStorage.getItem('dsKey')||'';$('cfg').cl
 function closeCfg(){$('cfg').classList.remove('show');}
 function saveCfg(){const k=$('akey').value.trim();if(k)localStorage.setItem('dsKey',k);closeCfg();toast('✓ 已保存');}
 
-// ── Scroll / Swipe ────────────────────────────────────────────────────────
+// ── Misc ──────────────────────────────────────────────────────────────────
 window.addEventListener('scroll',()=>$('top').classList.toggle('on',scrollY>300),{passive:true});
 setInterval(()=>{const t=$('stxt').textContent;if(t.includes('·'))$('stxt').textContent=tfmt()+'·'+t.split('·').slice(1).join('·');},1000);
 let ty0=0;
