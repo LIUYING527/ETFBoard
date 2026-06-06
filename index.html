@@ -151,6 +151,8 @@ canvas#ch{width:100%;height:105px;display:block;background:var(--s2);border-radi
       <canvas id="ch"></canvas>
       <div class="mrow" id="mtags"></div>
       <div class="mgrid" id="mgrid"></div>
+      <div id="scoreExp" style="margin-top:13px;background:var(--s2);border-radius:8px;padding:11px 12px;font-size:12px;line-height:1.8;color:var(--t2)"></div>
+      <div class="mgrid" id="mgrid2" style="margin-top:9px"></div>
     </div>
   </div>
 </div>
@@ -326,6 +328,15 @@ function compute(){
     if(d.ma50&&last>d.ma50)ms+=20;
     if(d.ma250&&last>d.ma250)ms+=20;
     d.maScore=ms;d.score=null;
+    // 近250日高低点
+    const win=c.slice(-250);
+    d.high250=Math.max(...win);d.low250=Math.min(...win);
+    // 20日年化波动率
+    if(c.length>=21){
+      const rets=[];for(let i=c.length-20;i<c.length;i++)rets.push(Math.log(c[i]/c[i-1]));
+      const mean=rets.reduce((a,b)=>a+b,0)/rets.length;
+      d.vol20=Math.sqrt(rets.reduce((a,r)=>a+(r-mean)**2,0)/rets.length)*Math.sqrt(252)*100;
+    }else d.vol20=null;
   }
   const ranked=ETFS.filter(e=>D[e.code]?.mom20!=null).sort((a,b)=>D[b.code].mom20-D[a.code].mom20);
   ranked.forEach((e,i)=>{
@@ -471,8 +482,39 @@ function openDet(code){
     <div class="mc"><div class="ml">动量得分</div><div class="mv">${d.momScore??'—'}</div></div>
     <div class="mc"><div class="ml">综合得分</div><div class="mv" style="color:${scc(sc)};font-size:15px">${sc}</div></div>
   `;
-  drawChart(d);
+  // ── 得分解析面板 ──
+  const tot=ETFS.filter(e=>D[e.code]?.mom20!=null).length;
+  const maRows=[
+    d.ma20&&d.price?`<div>${d.price>d.ma20?'✅':'❌'} MA20 ${fP(d.ma20)}：${d.price>d.ma20?'+20':'0'}分</div>`:'',
+    d.ma50&&d.price?`<div>${d.price>d.ma50?'✅':'❌'} MA50 ${fP(d.ma50)}：${d.price>d.ma50?'+20':'0'}分</div>`:'',
+    d.ma250&&d.price?`<div>${d.price>d.ma250?'✅':'❌'} MA250 ${fP(d.ma250)}：${d.price>d.ma250?'+20':'0'}分</div>`:'',
+  ].join('');
+  $('scoreExp').innerHTML=`
+    <div style="font-size:12px;font-weight:700;color:var(--tx);margin-bottom:6px">📊 得分解析</div>
+    <div style="margin-bottom:8px">
+      <div style="color:var(--t3);margin-bottom:2px">均线得分（最高60分）</div>
+      ${maRows||'<div style="color:var(--t3)">数据不足</div>'}
+      <div style="color:var(--bl);font-weight:600;margin-top:1px">小计：${d.maScore??0} / 60</div>
+    </div>
+    <div style="margin-bottom:8px">
+      <div style="color:var(--t3);margin-bottom:2px">动量得分（最高40分）</div>
+      <div>20日动量 ${fPct(d.mom20)}，在${tot}只ETF中排名 #${d.rank??'—'}（排越前得分越高）</div>
+      <div style="color:var(--bl);font-weight:600;margin-top:1px">小计：${d.momScore??0} / 40</div>
+    </div>
+    <div style="border-top:1px solid var(--s3);padding-top:7px">
+      <span style="font-size:13px;font-weight:700;color:${scc(sc)}">综合得分 ${sc} / 100 &nbsp;${sc>=70?'🟢 买入':sc>=40?'🟡 观望':'🔴 回避'}</span>
+      <div style="color:var(--t3);font-size:10px;margin-top:3px">数据 ${d.closes?.length??0} 日 · ≥70 买入 · 40–69 观望 · &lt;40 回避</div>
+    </div>`;
+  // ── 扩展指标行 ──
+  const dh=d.high250&&d.price?(d.price-d.high250)/d.high250*100:null;
+  const dhCol=dh!=null?(dh<-15?'var(--gr)':dh>-3?'var(--re)':'var(--t2)'):'var(--t2)';
+  $('mgrid2').innerHTML=`
+    <div class="mc"><div class="ml">250日高点</div><div class="mv" style="font-size:11px">${d.high250?fP(d.high250):'—'}</div></div>
+    <div class="mc"><div class="ml">距高点</div><div class="mv" style="color:${dhCol};font-size:12px">${dh!=null?dh.toFixed(1)+'%':'—'}</div></div>
+    <div class="mc"><div class="ml">20日波动率</div><div class="mv" style="font-size:11px">${d.vol20!=null?d.vol20.toFixed(1)+'%':'—'}</div></div>`;
+  // ── 先显示 modal，再画 canvas（否则 offsetWidth=0）──
   $('det').classList.add('show');
+  requestAnimationFrame(()=>requestAnimationFrame(()=>drawChart(d)));
 }
 function closeDet(){$('det').classList.remove('show');}
 function drawChart(d){
@@ -502,6 +544,10 @@ function drawChart(d){
   ctx.setTransform(1,0,0,1,0,0);
   ctx.font='10px sans-serif';ctx.fillStyle='#6366f1';ctx.fillText('MA20',4,13);
   ctx.fillStyle='#f59e0b';ctx.fillText('MA50',44,13);
+  // 价格轴（最高/最低标注）
+  ctx.fillStyle='rgba(148,163,184,.6)';ctx.textAlign='right';
+  ctx.fillText(fP(mx),W-3,12);ctx.fillText(fP(mn),W-3,H-3);
+  ctx.textAlign='left';
 }
 
 // ── Filter ────────────────────────────────────────────────────────────────
