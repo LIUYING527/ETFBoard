@@ -261,19 +261,33 @@ async function fetchRT(){
 }
 
 // ── 历史K线：腾讯 web.ifzq.gtimg.cn ─────────────────────────────────────
-// _var 参数让API把结果赋给指定变量名，例如 window._h510300 = {...}
-// 数据格式：data[tqCode].qfqday = [["日期","开","收","高","低","量"], ...]
+// 部分ETF在 fqkline 接口返回 qfqday key，其余在 newfqkline 接口返回 day key
+// 统一提取：优先 qfqday → 再试 day，收盘价始终在 index[2]
+function extractCloses(data, tq){
+  const etfData=data?.data?.[tq]||{};
+  const days=etfData.qfqday||etfData.day||[];
+  return days.map(d=>parseFloat(d[2])).filter(v=>!isNaN(v)&&v>0);
+}
+
 async function fetchKline(etf){
-  const vn='_h'+etf.code; // 全局变量名，如 _h510300
+  const vn='_h'+etf.code;
+  // 先试 fqkline（前复权）
   try{
     await loadScript(
       `https://web.ifzq.gtimg.cn/appstock/app/fqkline/get?_var=${vn}&param=${etf.tq},day,,,300,qfq`,
-      'UTF-8', 15000
+      'UTF-8', 14000
     );
-    const data=window[vn];
+    let closes=extractCloses(window[vn], etf.tq);
     delete window[vn];
-    const days=data?.data?.[etf.tq]?.qfqday||[];
-    const closes=days.map(d=>parseFloat(d[2])).filter(v=>!isNaN(v)&&v>0);
+    // 若无数据，改用 newfqkline 接口
+    if(!closes.length){
+      await loadScript(
+        `https://web.ifzq.gtimg.cn/appstock/app/newfqkline/get?_var=${vn}&param=${etf.tq},day,,,300,qfq`,
+        'UTF-8', 14000
+      );
+      closes=extractCloses(window[vn], etf.tq);
+      delete window[vn];
+    }
     if(!closes.length){FAIL.add(etf.code);return;}
     if(!D[etf.code])D[etf.code]={};
     D[etf.code].closes=closes;
