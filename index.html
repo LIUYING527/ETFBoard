@@ -121,6 +121,7 @@ canvas#ch{width:100%;height:105px;display:block;background:var(--s2);border-radi
   <button class="tab on" onclick="setF('all')">全部</button>
   <button class="tab" onclick="setF('宽基')">宽基</button>
   <button class="tab" onclick="setF('科技')">科技🔥</button>
+  <button class="tab" onclick="setF('能源')">能源⚡</button>
   <button class="tab" onclick="setF('行业')">行业</button>
   <button class="tab" onclick="setF('商品债')">商品债</button>
   <select class="ss" id="ss" onchange="renderGrid()">
@@ -187,17 +188,26 @@ const ETFS = [
   {code:'512480',name:'半导体ETF',   tq:'sh512480',cat:'科技'},
   {code:'513050',name:'中概互联ETF', tq:'sh513050',cat:'科技'},
   {code:'516110',name:'科技100ETF',  tq:'sh516110',cat:'科技'},
+  {code:'515230',name:'软件ETF',     tq:'sh515230',cat:'科技'},
+  {code:'515880',name:'通信ETF',     tq:'sh515880',cat:'科技'},
+  {code:'159741',name:'云计算ETF',   tq:'sz159741',cat:'科技'},
+  // 能源
+  {code:'515790',name:'光伏ETF',     tq:'sh515790',cat:'能源'},
+  {code:'516160',name:'新能源车ETF', tq:'sh516160',cat:'能源'},
+  {code:'516890',name:'电力ETF',     tq:'sh516890',cat:'能源'},
+  {code:'159628',name:'电网ETF',     tq:'sz159628',cat:'能源'},
+  {code:'515220',name:'煤炭ETF',     tq:'sh515220',cat:'能源'},
   // 行业
   {code:'512880',name:'证券ETF',     tq:'sh512880',cat:'行业'},
   {code:'512010',name:'医药ETF',     tq:'sh512010',cat:'行业'},
-  {code:'516160',name:'新能源车ETF', tq:'sh516160',cat:'行业'},
-  {code:'515790',name:'光伏ETF',     tq:'sh515790',cat:'行业'},
+  {code:'512170',name:'医疗ETF',     tq:'sh512170',cat:'行业'},
   {code:'512660',name:'军工ETF',     tq:'sh512660',cat:'行业'},
   {code:'512690',name:'白酒ETF',     tq:'sh512690',cat:'行业'},
   {code:'515180',name:'红利ETF',     tq:'sh515180',cat:'行业'},
   {code:'159632',name:'银行ETF',     tq:'sz159632',cat:'行业'},
-  {code:'515220',name:'煤炭ETF',     tq:'sh515220',cat:'行业'},
   {code:'512400',name:'有色金属ETF', tq:'sh512400',cat:'行业'},
+  {code:'512200',name:'房地产ETF',   tq:'sh512200',cat:'行业'},
+  {code:'159928',name:'消费ETF',     tq:'sz159928',cat:'行业'},
   // 商品债
   {code:'518880',name:'黄金ETF',     tq:'sh518880',cat:'商品债'},
   {code:'159934',name:'黄金ETF(易方达)',tq:'sz159934',cat:'商品债'},
@@ -554,7 +564,7 @@ function drawChart(d){
 function setF(c){
   curCat=c;
   document.querySelectorAll('#tabs .tab').forEach(t=>{
-    const m={'全部':'all','宽基':'宽基','科技🔥':'科技','行业':'行业','商品债':'商品债'};
+    const m={'全部':'all','宽基':'宽基','科技🔥':'科技','能源⚡':'能源','行业':'行业','商品债':'商品债'};
     t.classList.toggle('on',m[t.textContent]===c||(c==='all'&&t.textContent==='全部'));
   });
   renderGrid();
