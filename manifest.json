@@ -1,0 +1,12 @@
+{
+  "name": "ETF信号板",
+  "short_name": "ETF信号板",
+  "description": "A股ETF量化信号看板，RSI/MACD/布林带/KDJ多维评分",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#0f1219",
+  "theme_color": "#0f1219",
+  "icons": [
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml" }
+  ]
+}
