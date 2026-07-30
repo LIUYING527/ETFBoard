@@ -293,8 +293,8 @@ canvas#macd-cv{width:100%;height:40px;display:block}
   <div class="cbox">
     <div class="ctit">💼 我的持仓</div>
     <div id="poslist"></div>
-    <label class="clbl">ETF（点上方持仓可回填修改）</label>
-    <select class="cinp" id="pcode"></select>
+    <label class="clbl">ETF（点上方已有持仓可回填修改；换一只即新增）</label>
+    <select class="cinp" id="pcode" onchange="fillPos(this.value)"></select>
     <div style="display:flex;gap:8px">
       <div style="flex:1"><label class="clbl">成本价（元）</label><input class="cinp" id="pcost" type="number" step="0.001" min="0" placeholder="1.234"></div>
       <div style="flex:1"><label class="clbl">份额（份）</label><input class="cinp" id="pshares" type="number" min="0" placeholder="10000"></div>
@@ -1255,6 +1255,7 @@ function persistPos(){localStorage.setItem('etfPos',JSON.stringify(POS));}
 function openPos(code){
   renderPosList();
   if(code)fillPos(code);
+  else{$('pcost').value='';$('pshares').value='';}
   $('posm').classList.add('show');
 }
 function closePos(){$('posm').classList.remove('show');}
@@ -1272,7 +1273,9 @@ function savePos(){
   if(ex){ex.cost=cost;ex.shares=shares;}else POS.push({code,cost,shares});
   persistPos();renderPosList();renderGrid();
   if($('det').classList.contains('show'))renderDPos(ETFS.find(x=>x.code===code),D[code]||{});
-  toast('✓ 持仓已保存');
+  // 清空表单，方便继续添加下一只
+  $('pcost').value='';$('pshares').value='';
+  toast(ex?'✓ 已更新':'✓ 已添加，可继续选下一只');
 }
 function delPos(code){
   POS=POS.filter(p=>p.code!==code);
