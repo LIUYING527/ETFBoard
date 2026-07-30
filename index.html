@@ -321,23 +321,23 @@ const ETFS = [
   {code:'159819',name:'人工智能ETF', tq:'sz159819',cat:'科技'},
   {code:'159770',name:'机器人ETF',   tq:'sz159770',cat:'科技'},
   {code:'512480',name:'半导体ETF',   tq:'sh512480',cat:'科技'},
-  {code:'513050',name:'中概互联ETF', tq:'sh513050',cat:'科技'},
-  {code:'516110',name:'科技100ETF',  tq:'sh516110',cat:'科技'},
+  {code:'513050',name:'中概互联网ETF',tq:'sh513050',cat:'科技'},
+  {code:'515580',name:'科技100ETF',  tq:'sh515580',cat:'科技'},
   {code:'515230',name:'软件ETF',     tq:'sh515230',cat:'科技'},
   {code:'515880',name:'通信ETF',     tq:'sh515880',cat:'科技'},
-  {code:'159741',name:'云计算ETF',   tq:'sz159741',cat:'科技'},
+  {code:'516510',name:'云计算ETF',   tq:'sh516510',cat:'科技'},
   {code:'515790',name:'光伏ETF',     tq:'sh515790',cat:'能源'},
-  {code:'516160',name:'新能源车ETF', tq:'sh516160',cat:'能源'},
-  {code:'516890',name:'电力ETF',     tq:'sh516890',cat:'能源'},
-  {code:'159628',name:'电网ETF',     tq:'sz159628',cat:'能源'},
+  {code:'516160',name:'新能源ETF',   tq:'sh516160',cat:'能源'},
+  {code:'159611',name:'电力ETF',     tq:'sz159611',cat:'能源'},
+  {code:'159320',name:'电网设备ETF', tq:'sz159320',cat:'能源'},
   {code:'515220',name:'煤炭ETF',     tq:'sh515220',cat:'能源'},
   {code:'512880',name:'证券ETF',     tq:'sh512880',cat:'行业'},
   {code:'512010',name:'医药ETF',     tq:'sh512010',cat:'行业'},
   {code:'512170',name:'医疗ETF',     tq:'sh512170',cat:'行业'},
   {code:'512660',name:'军工ETF',     tq:'sh512660',cat:'行业'},
-  {code:'512690',name:'白酒ETF',     tq:'sh512690',cat:'行业'},
+  {code:'512690',name:'酒ETF',       tq:'sh512690',cat:'行业'},
   {code:'515180',name:'红利ETF',     tq:'sh515180',cat:'行业'},
-  {code:'159632',name:'银行ETF',     tq:'sz159632',cat:'行业'},
+  {code:'512800',name:'银行ETF',     tq:'sh512800',cat:'行业'},
   {code:'512400',name:'有色金属ETF', tq:'sh512400',cat:'行业'},
   {code:'512200',name:'房地产ETF',   tq:'sh512200',cat:'行业'},
   {code:'159928',name:'消费ETF',     tq:'sz159928',cat:'行业'},
@@ -1322,6 +1322,10 @@ $('aidrag').addEventListener('touchend',e=>{const dy=ty0-e.changedTouches[0].cli
 
 // ── Boot ──────────────────────────────────────────────────────────────────
 $('pcode').innerHTML=ETFS.map(e=>`<option value="${e.code}">${e.name} ${e.code}</option>`).join('');
+// 清理已不在列表中的旧持仓（代码修正前的遗留）
+const _n=POS.length;
+POS=POS.filter(p=>ETFS.some(e=>e.code===p.code));
+if(POS.length<_n)persistPos();
 if(!localStorage.getItem('dsKey'))setTimeout(()=>toast('提示：点 ⚙️ 填 DeepSeek API Key',3500),1200);
 loadAll();
 </script>
