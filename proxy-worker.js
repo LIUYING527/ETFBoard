@@ -15,6 +15,7 @@
 // Free tier: 100,000 requests/day; this app uses a few hundred.
 
 const ALLOW_HOSTS = [
+  'push2delay.eastmoney.com',    // delayed quotes / capital flow (push2 mirror)
   'push2.eastmoney.com',         // realtime quotes / capital flow
   'push2his.eastmoney.com',      // historical capital flow (spare)
   'datacenter-web.eastmoney.com' // data center: margin etc (spare)
